@@ -13,7 +13,7 @@ function initListeners(inputStates, canvas) {
         if(event.key === "ArrowDown") {
             inputStates.ArrowDown = true;
         }
-        if(event.key === "Space") {
+        if(event.key === " ") {
             inputStates.Space= true;
             console.log("Espace pressé");
 
