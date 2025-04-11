@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100..900&display=swap');
+*{
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+}
+body{
+    display:flex;
+    justify-content: center;  
+    align-items: center;
+    height: 100vh;
+    background-image: url(../assets/background-ph.jpg);
+    background-size: cover;
+    background-position: center;
+    background: linear-gradient(#ECEFFE,#CED6FB);
+   
+}
+.container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.games-list .games-item{
+   list-style:none;
+}
+.games-list .games-item .games-link{
+    width:400px;
+    display: block;
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    text-decoration: none;
+}
+.games-list .games-link .games-image{
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+   border-radius: 10px;
+}
+.games-list .games-link .games-title,.games-list .games-link .games-dom,.games-list .games-link .games-babylone{
+    
+    color: #333333;
+    padding:8px 16px ;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 16px 0 18px;
+    background: #DDE4FF;
+    width: fit-content;
+    border-radius: 35px;
+}
+.games-list .games-link .games-title{
+    background-color: aliceblue;
+    color: #333333;
+}
+.games-list .games-link .games-dom{
+    background-color: orange;
+    color: #205072;
+}
+.games-list .games-link .games-babylone{
+    background-color: rgb(240, 241, 255);
+    color: #207245;
+}
+
+
+
+
+.games-list .games-link .game-title{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333333;
+}
+.games-list .games-link .games-button{
+    
+    color: rgb(66, 66, 204);
+    border-radius: 50%;
+    margin: 30px 0 5px;
+    background:none;
+    cursor: pointer;
+    border: 1px solid rgb(66, 66, 204);
+    transform : rotate(-45deg);
+}
+
