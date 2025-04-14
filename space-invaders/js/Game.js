@@ -4,6 +4,8 @@ import Bullet from "./Bullet.js";
 import Score from "./Score.js"; 
 import { rectsOverlap } from "./collisions.js";
 import { initListeners } from "./ecouteurs.js";
+import { enemyShoot, moveEnemyBullets } from "./enemyShoot.js"; // Import des fonctions de enemyShoot.js
+
 
 // Game class gère tout : le joueur, les ennemis, les balles, le score, et les règles du jeu.
 export default class Game {
@@ -33,7 +35,7 @@ export default class Game {
             for (let col = 0; col < coll; col++) {
                 const x = startX + col * (enemyWidth + spacingX); // Position horizontale.
                 const y = startY + row * (enemyHeight + spacingY); // Position verticale.
-                const color = colors[row % colors.length]; // Couleur de l'ennemi.
+                const color = colors[row % colors.length]; // Couleur de l'enn emi.
                 const vitesse = 1; // Vitesse de déplacement des ennemis.
                 const enemy = new Enemy(x, y, vitesse, this.ctx, color); // Crée un ennemi.
                 this.objetsGraphiques.push(enemy); // Ajoute l'ennemi à la liste.
@@ -53,6 +55,14 @@ export default class Game {
         this.score = new Score(this.ctx, 10, 30); // on initialise le score en haut à gauche.
 
         initListeners(this.inputStates, this.canvas); 
+         // Déclenche les tirs ennemis toutes les 2 secondes
+         setInterval(() => {
+            const enemies = this.objetsGraphiques.filter(obj => obj instanceof Enemy); // Récupère les ennemis
+            if (enemies.length > 0) {
+                const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
+                enemyShoot(randomEnemy, this.enemyBullets); // Ajoute un tir ennemi
+            }
+        }, 2000);
         console.log("Game initialisé");
     }
 
@@ -75,8 +85,8 @@ export default class Game {
     update() {
         this.movePlayer(); // Déplace le joueur.
 
-        let shouldChangeDirection = false; // Les ennemis doivent-ils changer de direction ?
-        let shouldReverseVertical = false; // Les ennemis doivent-ils remonter ?
+        let shouldChangeDirection = false; 
+        let shouldReverseVertical = false; 
 
         this.objetsGraphiques.forEach(obj => {
             if (obj instanceof Enemy) {
@@ -116,12 +126,13 @@ export default class Game {
         if (this.inputStates.Space) {
             this.shoot(); // Appelle la méthode shoot.
         }
+          //on déplace les projectiles ennemis et on vérifie collisions
+          moveEnemyBullets(this.ctx, this.player, () => {
+            console.log("Le joueur a été touche");
+        });
         
         
-
-      
-
-        this.checkCollisions(); // balle contre ennemi.
+         this.checkCollisions(); // balle contre ennemi.
     }
 
     shoot() {
