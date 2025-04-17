@@ -36,4 +36,12 @@ export default class Player extends ObjectGraphique {
     move() {
         this.x += this.vitesseX; 
     }
+    stayWithinBounds(canvasWidth) {
+        if (this.x - this.w / 2 < 0) {
+            this.x = this.w / 2; // Bloque à gauche.
+        }
+        if (this.x + this.w / 2 > canvasWidth) {
+            this.x = canvasWidth - this.w / 2; // Bloque à droite.
+        }
+    }
 }
