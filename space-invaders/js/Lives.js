@@ -10,7 +10,7 @@ export default class Lives {
     draw() {
         this.ctx.font = '20px Arial'; // Police d'écriture.
         this.ctx.fillStyle = 'white'; // Couleur du texte.
-        this.ctx.fillText(`Lives: ${this.value}`, this.x, this.y); // Affiche "Lives: [valeur]".
+        this.ctx.fillText(`Lives: ${this.value}`, this.x, this.y); // Affiche "Lives".
     }
 
     // Réduit le nombre de vies.
