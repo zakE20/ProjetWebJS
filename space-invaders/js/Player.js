@@ -36,6 +36,8 @@ export default class Player extends ObjectGraphique {
     move() {
         this.x += this.vitesseX; 
     }
+    //fix:On gére que le joueur sera pas dehors de l'écran.
+    // On vérifie si le joueur est dans les limites de l'écran.
     stayWithinBounds(canvasWidth) {
         if (this.x - this.w / 2 < 0) {
             this.x = this.w / 2; // Bloque à gauche.

@@ -4,13 +4,16 @@ import Bullet from "./Bullet.js";
 import Score from "./Score.js"; 
 import { rectsOverlap } from "./collisions.js";
 import { initListeners } from "./ecouteurs.js";
-import { enemyShoot, moveEnemyBullets } from "./enemyShoot.js"; // Import des fonctions de enemyShoot.js
+import { enemyShoot, moveEnemyBullets } from "./enemyShoot.js"; 
 import Lives from './Lives.js';
+import Level1 from './Levels/Level1.js';
+import Level2 from './Levels/Level2.js'; 
 
 // Game class gère tout : le joueur, les ennemis, les balles, le score, et les règles du jeu.
 export default class Game {
     objetsGraphiques = []; // Une liste pour stocker joueur, ennemis, balles.
-
+    levels=[new Level1(),new Level2()]; // Liste des niveaux.
+    currentLevelIndex = 0; // Indice du niveau actuel.
     constructor(canvas) {
         this.canvas = canvas; 
         this.inputStates = { // Les touches que le joueur peut utiliser.
@@ -29,23 +32,7 @@ export default class Game {
         this.canvas.height = window.innerHeight; // Hauteur de la fenêtre
     }
 
-    // crée une grille d'ennemis.
-    createEnemyGrid(rows, coll, enemyWidth, enemyHeight, spacingX, spacingY) {
-        const startX = (this.canvas.width - (coll * (enemyWidth + spacingX) - spacingX)) / 2; // Centrer la grille.
-        const startY = 50; // Position de départ en haut de l'écran.
-        const colors = ["green", "blue", "purple", "yellow", "red"]; // Couleurs des ennemis.
-
-        for (let row = 0; row < rows; row++) {
-            for (let col = 0; col < coll; col++) {
-                const x = startX + col * (enemyWidth + spacingX); // Position horizontale.
-                const y = startY + row * (enemyHeight + spacingY); // Position verticale.
-                const color = colors[row % colors.length]; // Couleur de l'enn emi.
-                const vitesse = 1; // Vitesse de déplacement des ennemis.
-                const enemy = new Enemy(x, y, vitesse, this.ctx, color); // Crée un ennemi.
-                this.objetsGraphiques.push(enemy); // Ajoute l'ennemi à la liste.
-            }
-        }
-    }
+    
 
     // =initialise le jeu.
     async init() {
@@ -55,8 +42,7 @@ export default class Game {
         this.player = new Player(this.canvas.width / 2, this.canvas.height - 50, 0, this.ctx); // Crée le joueur.
         this.objetsGraphiques.push(this.player); // on ajoute le joueur à la liste.
 
-        this.createEnemyGrid(5, 10, 40, 40, 20, 30); // On crée une grille de 5 lignes et 10 colonnes d'ennemis.
-
+        this.loadLevel(this.currentLevelIndex); // Charge le niveau.
         this.score = new Score(this.ctx, 10, 30); // on initialise le score en haut à gauche.
         this.lives = new Lives(this.ctx, this.canvas.width - 100, 30, 3); // Initialise les vies en haut à droite.
 
@@ -70,6 +56,16 @@ export default class Game {
             }
         }, 2000);
         console.log("Game initialisé");
+    }
+    loadLevel(indexLevel) {
+        if (indexLevel < this.levels.length) {
+            const level = this.levels[indexLevel]; // on récupère le niveau actuel.
+            level.appliquerLeFond(this); // on applique le fond du niveau.
+
+            level.creerGrilleEnnemis(this); // on crée la grille d'ennemis.
+        } else {
+            console.log("Tous les niveaux sont terminés !"); //debug.
+        }
     }
 
     //  démarre le jeu.
@@ -197,5 +193,21 @@ export default class Game {
                 });
             }
         });
+        //on verifie si tous les ennemies sont élimines
+        const enemieRestants = this.objetsGraphiques.some(obj => obj instanceof Enemy);
+        if(!enemieRestants) {
+            this.nextLevel(); // Passe au niveau suivant.
+        }
+    }
+    // Passe au niveau suivant. 
+    nextLevel() {
+        this.currentLevelIndex++; // Incrémente l'indice du niveau.
+        if(this.currentLevelIndex < this.levels.length) {
+            this.loadLevel(this.currentLevelIndex); // Charge le niveau suivant.
+        }
+        else {
+            
+            this.isGameOver = true; // Fin du jeu.
+        }
     }
 }
