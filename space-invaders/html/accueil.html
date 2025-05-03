@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Alien Invaders</title>
+    <link rel="stylesheet" href="../css/accueil.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>SPACE ALIEN INVADERS</h1>
+            <div class="high-score">High Score: <span id="highScoreValue">0</span></div>
+        </div>
+
+        <div class="game-buttons">
+            <button class="play-button">Play</button>
+        </div>
+    </div>
+
+    <button id="sound-button">
+        <img src="../../assets/sound-icon.png" alt="Sound" class="icon">
+    </button>
+
+    <button id="help-button">
+        <img src="../../assets/help-icon.png" alt="Help" class="icon">
+    </button>
+
+    <!--tutorial -->
+    <div class="help-modal" id="helpModal">
+        <div class="help-content">
+            <span class="close" id="closeHelp">&times;</span>
+            <h2>TUTORIAL</h2>
+            <p>Use the arrow keys or [A-D] to move. Spacebar to shoot.</p>
+            <p>Click and Drag to move. Spacebar to shoot.</p>
+            <img src="../../assets/cargo-ship.png" alt="Tutorial Ship" class="tutorial-ship">
+        </div>
+    </div>
+
+    <script src="../js/accueil.js"></script>
+</body>
+</html>

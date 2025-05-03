@@ -1,0 +1,57 @@
+/* Game Over Page */
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #0f0f2d;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+}
+
+.game-over h1 {
+    font-size: 3rem;
+    color: #39ff14;
+    text-shadow: 0 0 20px #39ff14, 0 0 30px #39ff14, 0 0 40px #39ff14;
+}
+
+.score-info {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.score-info p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.game-buttons {
+    margin-top: 50px;
+}
+
+.home-button, .restart-button {
+    background-color: #28a745;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.home-button:hover, .restart-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.home-button {
+    margin-right: 20px;
+}

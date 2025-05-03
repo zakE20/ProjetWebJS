@@ -1,10 +1,10 @@
 function initListeners(inputStates, canvas) {
     window.onkeydown = (event) => {
         console.log("Touche pressée : " + event.key);
-        if(event.key === "ArrowRight") {
+        if(event.key === "ArrowRight" || event.key === "d" || event.key === "D") {
             inputStates.ArrowRight = true;
         }
-        if(event.key === "ArrowLeft") {
+        if(event.key === "ArrowLeft" || event.key === "a" || event.key === "A") {
             inputStates.ArrowLeft = true;
         }
         if(event.key === "ArrowUp") {
