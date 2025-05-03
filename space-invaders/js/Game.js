@@ -8,15 +8,17 @@ import { enemyShoot, moveEnemyBullets } from "./enemyShoot.js";
 import Lives from './Lives.js';
 import Level1 from './Levels/Level1.js';
 import Level2 from './Levels/Level2.js'; 
-
+import Level3 from './Levels/Level3.js';
+import Level4 from './Levels/Level4.js'; 
+import Victoire from "./Levels/Victoire.js";
 // Game class gère tout : le joueur, les ennemis, les balles, le score, et les règles du jeu.
 export default class Game {
     objetsGraphiques = []; // Une liste pour stocker joueur, ennemis, balles.
-    levels=[new Level1(),new Level2()]; // Liste des niveaux.
-    currentLevelIndex = 0; // Indice du niveau actuel.
+    levels=[new Level1(),new Level2(),new Level3(),new Level4(),new Victoire()]; // Liste des niveaux.
+    currentLevelIndex = 0; 
     constructor(canvas) {
         this.canvas = canvas; 
-        this.inputStates = { // Les touches que le joueur peut utiliser.
+        this.inputStates = { 
             ArrowRight: false, // Aller à droite.
             ArrowLeft: false, // Aller à gauche.
             Space: false, // Tirer.
@@ -44,25 +46,71 @@ export default class Game {
 
         this.loadLevel(this.currentLevelIndex); // Charge le niveau.
         this.score = new Score(this.ctx, 10, 30); // on initialise le score en haut à gauche.
-        this.lives = new Lives(this.ctx, this.canvas.width - 100, 30, 3); // Initialise les vies en haut à droite.
+        this.lives = new Lives(this.ctx, this.canvas.width - 100, 30, 3); // on initialise les vies en haut à droite.
 
         initListeners(this.inputStates, this.canvas); 
-         // Déclenche les tirs ennemis toutes les 2 secondes
+         // fix:on Déclenche les tirs ennemis toutes les 2 secondes
          setInterval(() => {
-            const enemies = this.objetsGraphiques.filter(obj => obj instanceof Enemy); // Récupère les ennemis
-            if (enemies.length > 0) {
-                const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
-                enemyShoot(randomEnemy, this.enemyBullets); // Ajoute un tir ennemi
+            if (this.currentLevelIndex !== 0) {
+                if (this.currentLevelIndex === 2) {
+                    this.shootMultipleEnemies(3); // 3 ennemis tirent simultanément
+                }
+                // si le niveau 3,4 et 5 ennemis peuvent tirer simultanément
+                else if (this.currentLevelIndex === 3) {
+                    this.shootMultipleEnemies(5); // 5 ennemis tirent simultanément
+                }
+                else if (this.currentLevelIndex === 4) {
+                    this.shootMultipleEnemies(7); // 7 ennemis tirent simultanément
+                }
+                // Si c'est le niveau 2, un seul ennemi tire
+                else {
+                    const enemies = this.objetsGraphiques.filter(obj => obj instanceof Enemy);
+                    if (enemies.length > 0) {
+                        const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
+                        enemyShoot(randomEnemy, this); // enemyShoot pour un ennemi unique
+                    }
+                }
             }
         }, 2000);
-        console.log("Game initialisé");
     }
+        
+        // gestion des tirs multiples
+        shootMultipleEnemies(numEnemies) {
+            const enemies = this.objetsGraphiques.filter(obj => obj instanceof Enemy);
+            const randomEnemies = [];
+        
+            // on liimite le nombre de tirs à la quantité d'ennemis disponibles
+            const actualEnemiesToShoot = Math.min(numEnemies, enemies.length);
+            
+            while (randomEnemies.length < actualEnemiesToShoot) {
+                const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
+                if (!randomEnemies.includes(randomEnemy)) {
+                    randomEnemies.push(randomEnemy);
+                }
+            }
+        
+            randomEnemies.forEach(enemy => {
+                enemyShoot(enemy, this); 
+            });
+        }
+        
+        
     loadLevel(indexLevel) {
         if (indexLevel < this.levels.length) {
             const level = this.levels[indexLevel]; // on récupère le niveau actuel.
             level.appliquerLeFond(this); // on applique le fond du niveau.
 
             level.creerGrilleEnnemis(this); // on crée la grille d'ennemis.
+            if (this.currentLevelIndex === 3) { // Niveau 4
+                this.player.vitesseX = 5;  //  vitesse du joueur pour le niveau 4
+            }
+            else if(this.currentLevelIndex === 4) { // Niveau 5
+                this.player.vitesseX = 7;  //vitesse du joueur pour le niveau 5
+            }
+            else {
+                this.player.vitesseX = 3;  // vitesse normale pour les autres niveaux
+            }
+    
         } else {
             console.log("Tous les niveaux sont terminés !"); //debug.
         }
@@ -77,12 +125,12 @@ export default class Game {
     // La boucle principale du jeu.
     mainAnimationLoop() {
         if (this.isGameOver) {
-            this.ctx.save();
-            this.ctx.fillStyle = "red";
-            this.ctx.font = "40px Arial";
-            this.ctx.fillText("Game Over", this.canvas.width / 2 - 100, this.canvas.height / 2);
-            this.ctx.restore();
-            return; // Arrête la boucle si le jeu est terminé.
+            this.score.updateHighScore(); // Met à jour le meilleur score.
+            localStorage.setItem("currentScore", this.score.value);  
+            localStorage.setItem("highScore", this.score.highScore); 
+
+            window.location.href = "../html/gameOver.html"; 
+            return; 
         }
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Efface l'écran.
         this.drawAllObjects(); 
@@ -166,10 +214,10 @@ export default class Game {
     movePlayer() {
         this.player.vitesseX = 0; // Par défaut le joueur fixe.
 
-        if (this.inputStates.ArrowRight) {
-            this.player.vitesseX = 3; 
+        if (this.inputStates.ArrowRight || this.inputStates["D"]) {
+            this.player.vitesseX = 3; // Vitesse à droite.
         }
-        if (this.inputStates.ArrowLeft) {
+        if (this.inputStates.ArrowLeft || this.inputStates["A"]) {
             this.player.vitesseX = -3;
         }
 
@@ -196,18 +244,19 @@ export default class Game {
         //on verifie si tous les ennemies sont élimines
         const enemieRestants = this.objetsGraphiques.some(obj => obj instanceof Enemy);
         if(!enemieRestants) {
-            this.nextLevel(); // Passe au niveau suivant.
+            this.nextLevel(); //  niveau suivant.
         }
     }
-    // Passe au niveau suivant. 
+    // on passe au niveau suivant. 
     nextLevel() {
-        this.currentLevelIndex++; // Incrémente l'indice du niveau.
+        this.currentLevelIndex++; //++indice du niveau.
         if(this.currentLevelIndex < this.levels.length) {
-            this.loadLevel(this.currentLevelIndex); // Charge le niveau suivant.
+            this.loadLevel(this.currentLevelIndex); // next  niveau.
         }
         else {
             
             this.isGameOver = true; // Fin du jeu.
         }
     }
+   
 }

@@ -30,6 +30,7 @@ function moveEnemyBullets(ctx, player, onPlayerHit) {
         )) {
            // On enlève la balle de notre boîte Basta son travaille.
             enemyBullets.splice(index, 1);
+            player.hit();
 
             // On appelle une fonction pour dire que le joueur a été touché et pour enlever des points de vie (ça arrive procahinement).
             onPlayerHit();

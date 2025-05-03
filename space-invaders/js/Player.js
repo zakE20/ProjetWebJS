@@ -7,16 +7,26 @@ export default class Player extends ObjectGraphique {
         super(x, y, 45, 20, "green");
         this.vitesseX = vitesseX; // La vitesse du joueur.
         this.ctx = ctx; // Le crayon pour dessiner le joueur.
-        this.shootCooldown = 300; // Temps d'attente entre deux tirs pour éviter les tirs multiples.
+        this.shootCooldown = 500; // Temps d'attente entre deux tirs pour éviter les tirs multiples.
         this.canShoot = true; // Le joueur peut tirer au début.
+        this.isHit = false; //  si le joueur a été touché.
+        this.image = new Image();
+        this.image.src = '../../assets/spaceship.png'; // Chemin de l'image du joueur.
     }
 
     draw(ctx) {
         // On sauvegarde l'état actuel du crayon.
         ctx.save(); 
-        // On choisit la couleur du joueur (vert).
-        ctx.fillStyle = this.couleur; 
-        ctx.fillRect(this.x - this.w / 2, this.y - this.h / 2, this.w, this.h); // On dessine un rectangle pour représenter le joueur.
+        if (this.isHit) {
+            ctx.filter = 'brightness(0) saturate(100%) sepia(100%) hue-rotate(0deg) saturate(400%)'; 
+        } else {
+            ctx.filter = 'none'; 
+        }
+
+        const newHeight = this.h * 2; 
+
+        // On dessine l'image du joueur avec la nouvelle hauteur, tout en gardant la largeur inchangée
+        ctx.drawImage(this.image, this.x - this.w / 2, this.y - newHeight / 2, this.w, newHeight);
         ctx.restore(); // On restaure l'état du crayon.
     }
     shoot() {
@@ -29,6 +39,14 @@ export default class Player extends ObjectGraphique {
             return new Bullet(this.x, this.y - this.h / 2, 5, 10, 'red', -5);
         }
         return null; //null
+    }
+    hit() {
+        if (!this.isHit) { 
+            this.isHit = true;
+            setTimeout(() => {
+                this.isHit = false; 
+            }, 500); 
+        }
     }
 
     //  déplace le joueur.

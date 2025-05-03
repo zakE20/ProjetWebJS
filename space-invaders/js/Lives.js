@@ -8,8 +8,8 @@ export default class Lives {
 
     // Dessine les vies à l'écran.
     draw() {
-        this.ctx.font = '20px Arial'; // Police d'écriture.
-        this.ctx.fillStyle = 'white'; // Couleur du texte.
+     this.ctx.fillStyle = "white";
+        this.ctx.font = "24px Arial";
         this.ctx.fillText(`Lives: ${this.value}`, this.x, this.y); // Affiche "Lives".
     }
 
