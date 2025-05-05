@@ -11,7 +11,12 @@ window.onload = function() {
         window.location.href = '../html/accueil.html';
     });
     document.querySelector('.restart-button').addEventListener('click', function() {
-        window.location.href = '../html/canvas.html';
+        let idx = parseInt(localStorage.getItem('lastUnlockedLevel'), 10);
+        let niveau = isNaN(idx) ? 1 : idx + 1;
+        window.location.href =  `../html/canvas.html?level=${niveau}`;
+    });
+    document.querySelector('.restart-level').addEventListener('click', function() {
+        window.location.href = `../html/canvas.html`;
     });
 };
 function updateCurrentScore(score) {
