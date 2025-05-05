@@ -7,26 +7,27 @@
     <link rel="stylesheet" href="../css/accueil.css">
 </head>
 <body>
+    <button class="back-btn"
+            onclick="location.href='../../index.html'"
+            aria-label="Retour à l’accueil">
+        <img src="../../assets/retour.png" alt="">
+    </button>
     <div class="container">
         <div class="title">
             <h1>SPACE ALIEN INVADERS</h1>
             <div class="high-score">High Score: <span id="highScoreValue">0</span></div>
         </div>
-
         <div class="game-buttons">
             <button class="play-button">Play</button>
         </div>
     </div>
-
-    <button id="sound-button">
+<button id="sound-button">
         <img src="../../assets/sound-icon.png" alt="Sound" class="icon">
     </button>
-
-    <button id="help-button">
+<button id="help-button">
         <img src="../../assets/help-icon.png" alt="Help" class="icon">
     </button>
-
-    <!--tutorial -->
+ <!--tutorial -->
     <div class="help-modal" id="helpModal">
         <div class="help-content">
             <span class="close" id="closeHelp">&times;</span>
@@ -37,6 +38,6 @@
         </div>
     </div>
 
-    <script src="../js/accueil.js"></script>
+    <script type="module" src="../js/accueil.js"></script>
 </body>
 </html>

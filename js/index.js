@@ -1,9 +1,32 @@
-const burgerMenuButton = document.querySelector('.burger-menu-button');
-const burgerMenuIcon = document.querySelector('.burger-menu-button i');
-const burgerMenu = document.querySelector('.burger-menu');
-
-burgerMenuButton.onclick = () => {
-  burgerMenu.classList.toggle('open');
-  const isOpen = burgerMenu.classList.contains('open');
-  burgerMenuIcon.classList = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const burgerMenu = document.getElementById('burger-menu');
+  const navbar = document.getElementById('navbar');
+    function checkSession() {
+    return localStorage.getItem('currentUser');
+  }
+  function updateLoginButtons() {
+      const userEmail = checkSession();
+      const loginButtons = document.querySelectorAll('.btn-se-connecter, .btn-se-connecter-horizontal');
+      if (userEmail) {
+          loginButtons.forEach(button => {
+              button.textContent = 'Se déconnecter';
+              button.onclick = () => {
+                    localStorage.removeItem('currentUser');
+                location.reload();
+              };
+          });
+      } else {
+          loginButtons.forEach(button => {
+              button.textContent = 'Se connecter';
+              button.onclick = () => {
+                  location.href = 'login.html';
+              };
+          });
+      }
+  }
+    burgerMenu.addEventListener('click', () => {
+      burgerMenu.classList.toggle('active');
+      navbar.classList.toggle('active');
+  });
+updateLoginButtons();
+});

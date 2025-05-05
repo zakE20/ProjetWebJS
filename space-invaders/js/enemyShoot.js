@@ -19,10 +19,8 @@ function moveEnemyBullets(ctx, player, onPlayerHit) {
     enemyBullets.forEach((bullet, index) => {
         //bouge la balle pour descendre vers le bas
         bullet.move();
-
         // On dessine la balle sur l'écran pour qu'on puisse la voir.
         bullet.draw(ctx);
-
         // Maintenant, on vérifie si la balle a touché le joueur.
         if (rectsOverlap(
             bullet.x - bullet.w / 2, bullet.y - bullet.h / 2, bullet.w, bullet.h, // Position et taille de la balle
@@ -35,7 +33,6 @@ function moveEnemyBullets(ctx, player, onPlayerHit) {
             // On appelle une fonction pour dire que le joueur a été touché et pour enlever des points de vie (ça arrive procahinement).
             onPlayerHit();
         }
-
         // Si la balle sort de l'écran 
         if (bullet.y > ctx.canvas.height) {
             enemyBullets.splice(index, 1); // On enlève la balle de la boîte.

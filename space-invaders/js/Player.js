@@ -11,8 +11,7 @@ export default class Player extends ObjectGraphique {
         this.canShoot = true; // Le joueur peut tirer au début.
         this.isHit = false; //  si le joueur a été touché.
         this.image = new Image();
-        this.image.src = '../../assets/spaceship.png'; // Chemin de l'image du joueur.
-    }
+        this.image.src = '../../assets/spaceship.png';}
 
     draw(ctx) {
         // On sauvegarde l'état actuel du crayon.
