@@ -7,11 +7,11 @@ import { initListeners } from "./ecouteurs.js";
 import { enemyShoot, moveEnemyBullets } from "./enemyShoot.js"; 
 import Lives from './Lives.js';
 import Level1 from './Levels/Level1.js';
-import Level2 from './Levels/Level2.js'; 
+import Level2 from './Levels/Level2.js';
 import Level3 from './Levels/Level3.js';
-import Level4 from './Levels/Level4.js'; 
-import Victoire from "./Levels/Victoire.js";
-import { playGame,setMuted,playGameOver } from './Son.js'; 
+import Level4 from './Levels/Level4.js';
+import Victoire from './Levels/Victoire.js';
+import { playGame,setMuted,playGameOver} from './Son.js'; 
 // Game class gère tout : le joueur, les ennemis, les balles, le score, et les règles du jeu.
 export default class Game {
     objetsGraphiques = []; // Une liste pour stocker joueur, ennemis, balles.
@@ -29,6 +29,7 @@ export default class Game {
         };
         this.isPaused = false;   
         this.pauseOverlayAlpha = 0; 
+        this.iswin = false; 
         this.enemyDirection = 1; // Les ennemis commencent par aller à droite.
         this.enemyVerticalDirection = 1; // Les ennemis descendent au début.
     }
@@ -107,7 +108,7 @@ export default class Game {
             const level = this.levels[indexLevel]; // on récupère le niveau actuel.
             level.appliquerLeFond(this); // on applique le fond du niveau.
 
-            level.creerGrilleEnnemis(this); // on crée la grille d'ennemis.
+           level.creerGrilleEnnemis(this); // on crée la grille d'ennemis.
             if (this.currentLevelIndex === 3) { // Niveau 4
                 this.player.vitesseX = 5;  //  vitesse du joueur pour le niveau 4
             }
@@ -152,8 +153,12 @@ export default class Game {
                 scores[email] = Math.max(best, this.score.value);      
                 localStorage.setItem('scores', JSON.stringify(scores));
             }
-            localStorage.setItem('lastScore', this.score.value);      
-           window.location.href = "../html/gameOver.html";
+            localStorage.setItem('lastScore', this.score.value);  
+            playGameOver();  
+            setTimeout(() => {
+                const affiche = this.iswin ? "../html/win.html" : "../html/gameOver.html";
+                window.location.href = affiche;
+            }, 3000); 
             return;
         }
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); 
@@ -263,8 +268,9 @@ export default class Game {
             this.loadLevel(this.currentLevelIndex); // next  niveau.
         }
         else {
+            this.iswin = true; // Si tous les niveaux sont terminés, on affiche la victoire.
             
-            this.isGameOver = true; // Fin du jeu.
+            this.isGameOver = true;
         }
     }
    

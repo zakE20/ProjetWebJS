@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+    if(loginForm){
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = document.getElementById('email').value;
@@ -70,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             displayMessage('Email ou mot de passe incorrect.', false);
         }
     });
+}
+if(signupForm){
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = document.getElementById('signup-email').value;
@@ -99,4 +102,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
  updateLoginButtons();
-});
+}});

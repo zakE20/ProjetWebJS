@@ -1,4 +1,3 @@
-
 window.onload = function() {
     const email  = localStorage.getItem('currentUser');
   const scores = JSON.parse(localStorage.getItem('scores') || '{}');

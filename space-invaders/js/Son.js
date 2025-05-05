@@ -1,7 +1,7 @@
 // space‑invaders/js/sounds.js
 const menu   = new Audio('../../assets/Son/menu.mp3');
 const game   = new Audio('../../assets/Son/gameplay.mp3');
-const over   = new Audio('../../assets/Son/gameOver.mp3');
+const over   = new Audio('../../assets/Son/gameover.mp3');
 
 menu.loop = game.loop = true;
 let muted = false;
