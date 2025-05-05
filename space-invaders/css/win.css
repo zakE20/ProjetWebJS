@@ -1,0 +1,27 @@
+body{
+    font-family:'Press Start 2P',cursive;
+    background:#0f0f2d;
+    color:#39ff14;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+  }
+  h1{font-size:3rem;
+    text-shadow:0 0 20px #39ff14;}
+  .buttons{
+    margin-top:40px}
+  button{
+    background:#28a745;
+    color:#fff;
+    font-size:1.3rem;
+    padding:12px 35px;
+    border:none;
+    border-radius:5px;
+    margin:0 10px;
+    cursor:pointer;
+    transition:transform .2s;
+  }
+  button:hover{transform:scale(1.07);}
+  
