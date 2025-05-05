@@ -5,7 +5,6 @@ export default class Bullet extends ObjectGraphique {
         super(x, y, w, h, couleur);
         this.vitesse = vitesse;
     }
-
     move() {
         this.y += this.vitesse;
 
@@ -14,7 +13,6 @@ export default class Bullet extends ObjectGraphique {
             this.toDelete = true;
         }
     }
-
     draw(ctx) {
         ctx.save();
         ctx.fillStyle = this.couleur;

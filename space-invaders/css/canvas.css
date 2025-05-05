@@ -6,9 +6,21 @@ body {
     margin: 0;
     background-color: black;
 }
-
 canvas {
     border: 1px solid black;
     
 }
-
+#pause-btn{
+    position:fixed;
+    bottom: unset;
+    right:10px;
+    z-index:1000;
+    background:#ffffff20;          
+    backdrop-filter:blur(4px);
+    border:2px solid #fff;
+    width:48px;height:48px;
+    border-radius:50%;
+    font-size:1.4rem; color:#fff;
+    cursor:pointer; 
+  }
+  
