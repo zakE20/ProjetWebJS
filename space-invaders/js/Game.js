@@ -153,7 +153,8 @@ export default class Game {
                 scores[email] = Math.max(best, this.score.value);      
                 localStorage.setItem('scores', JSON.stringify(scores));
             }
-            localStorage.setItem('lastScore', this.score.value);  
+            localStorage.setItem('lastScore', this.score.value); 
+            localStorage.setItem('lastUnlockedLevel', this.currentLevelIndex);
             playGameOver();  
             setTimeout(() => {
                 const affiche = this.iswin ? "../html/win.html" : "../html/gameOver.html";
