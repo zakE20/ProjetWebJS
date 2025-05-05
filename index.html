@@ -1,79 +1,121 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games On Web</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ludiverse</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<header>
-        <video id="bg-video" autoplay muted loop playsinline>
-            <source src="/assets/backgroundd.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la vidéo.
-        </video>
-        <div class="video-overlay"></div>
-        <nav>
-            <h1>Games On Web</h1>
-        <div class="right" id="navbar">
-                <p onclick="location.href='/'">Home</p>
-                <p onclick="location.href='classement.html'">Classement</p>
-                <button class="btn-se-connecter" onclick="location.href='login.html'">Se connecter</button>
+  <header>
+    <video id="bg-video" autoplay muted loop playsinline>
+      <source src="/assets/backgroundd.mp4" type="video/mp4" />
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+    <div class="video-overlay"></div>
+    <nav>
+      <h1>Games On Web</h1>
+      <div class="right" id="navbar">
+        <p onclick="location.href='/'">Home</p>
+        <p onclick="location.href='classement.html'">Classement</p>
+        <button class="btn-se-connecter" onclick="location.href='login.html'">Se connecter</button>
+      </div>
+      <button class="btn-acheter-horizontal">Acheter</button>
+      <button class="btn-se-connecter-horizontal" onclick="location.href='login.html'">Se connecter</button>
+      <div class="burger-menu" id="burger-menu"><span></span><span></span><span></span></div>
+    </nav>
+    <section class="presentation first">
+      <div id="home-view">
+        <div class="product-presentation">
+          <h1>Ludiverse</h1>
+          <p>
+            Découvrez <strong>Ludiverse</strong> : votre portail vers un univers
+            infini de jeux HTML5 jouables instantanément, sans téléchargement.
+            Parcourez des titres d’arcade rétro, des casse-têtes modernes et des
+            aventures multijoueurs—tout cela directement dans votre navigateur.
+          </p>
+          <button onclick="location.href='games.html'">Explorer la Bibliothèque</button>
+          <div class="small-images">
+            <div class="small">
+              <button class="thumb"
+                      onclick="showGame(
+                        'Space Alien Invaders',
+                        'Pilotez votre vaisseau avec ←/→ ou A/D, tirez avec ESPACE, mettez en pause avec P. Affrontez des vagues d’extraterrestres sur 5 niveaux dans un canvas HTML5.',
+                        '/assets/Canvas.jpeg'
+                      );">
+                <img src="/assets/Canvas.jpeg" alt="Space Invaders" />
+              </button>
             </div>
-             <button class="btn-acheter-horizontal">Acheter</button>
-            <button class="btn-se-connecter-horizontal" onclick="location.href='login.html'">Se connecter</button>
-            <div class="burger-menu" id="burger-menu">
-                <span></span><span></span><span></span>
+            <div class="small">
+              <button class="thumb"
+                      onclick="showGame(
+                        'DOM Battle',
+                        'Master the DOM in a fun, interactive battle.',
+                        '/assets/DOM.jpg'
+                      )">
+                <img src="/assets/DOM.jpg" alt="DOM Battle" />
+              </button>
             </div>
-        </nav>
-        <section class="presentation first">
-            <div class="product-presentation">
-                <h1>Ludiverse</h1>
-                <p>
-                Découvrez <strong>Ludiverse</strong> : votre portail vers un univers infini de jeux
-                HTML5 jouables instantanément, sans téléchargement. Parcourez des titres
-                d’arcade rétro, des casse‑têtes modernes et des aventures multijoueurs—
-                tout cela directement dans votre navigateur, sur ordinateur ou mobile.
-                </p>
-            <button onclick="location.href='games.html'">
-                Explorer la Bibliothèque
-                </button>
-            <div class="small-images">
-                    <div class="small">
-                        <button class="thumb"
-                                onclick="location.href='/space-invaders.html'">
-                            <img src="/assets/Canvas.jpeg"
-                                 alt="Jouer à Space Invaders">
-                        </button>
-                    </div>
-                    <div class="small"><img src="/assets/DOM.jpg"     alt="DOM concept art"></div>
-                    <div class="small"><img src="/assets/babylone.jpeg" alt="Babylone concept art"></div>
-                </div>
+            <div class="small">
+              <button class="thumb"
+                      onclick="showGame(
+                        'Babylone',
+                        'Explore ancient puzzles in the heart of Babylon.',
+                        '/assets/babylone.jpeg'
+                      )">
+                <img src="/assets/babylone.jpeg" alt="Babylone" />
+              </button>
             </div>
-        </section>
-    </header>
-    <footer>
-        <div class="column">
-            <h3>Aide</h3>
-            <p>contact@ludiverse.fr</p>
-            <p>Contactez-nous</p>
-            <p>Comment acheter</p>
+          </div>
         </div>
-        <div class="column">
-            <h3>Recrutement</h3>
-            <p>business@ludiverse.fr</p>
-            <p>en ligne</p>
-            <p>Comment faire ?</p>
+      </div>
+
+      <div id="game-view">
+        <div class="presentation-content"
+             style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;width:100%;">
+          <div class="image-presentation" style="flex:1;min-width:250px;padding:20px;">
+            <img id="detail-img"
+                 src=""
+                 alt=""
+                 style="width:100%;border-radius:20px;box-shadow:0 0 20px rgba(0,0,0,.5);" />
+          </div>
+          <div class="product-presentation" style="flex:1;min-width:250px;text-align:right;">
+            <h1 id="detail-title"></h1>
+            <p id="detail-desc" style="color:#e9e9e9;"></p>
+            <button id="back-btn"
+                    style="margin-top:20px;background:var(--violet);color:#fff;padding:10px 20px;
+                           border:none;border-radius:8px;cursor:pointer;">
+              ⬅ Retour
+            </button>
+          </div>
         </div>
-        <div class="column">
-            <h3>Réseaux</h3>
-            <p>Facebook</p>
-            <p>Twitter</p>
-            <p>Instagram</p>
-        </div>
-    </footer>
-    <script src="/js/index.js"></script>
-    <script src="/js/accountStorage.js"></script>
+      </div>
+    </section>
+  </header>
+
+  <footer>
+    <div class="column">
+      <h3>Aide</h3>
+      <p>contact@ludiverse.fr</p>
+      <p>Contactez-nous</p>
+      <p>Comment acheter</p>
+    </div>
+    <div class="column">
+      <h3>Recrutement</h3>
+      <p>business@ludiverse.fr</p>
+      <p>En ligne</p>
+      <p>Comment faire ?</p>
+    </div>
+    <div class="column">
+      <h3>Réseaux</h3>
+      <p>Facebook</p>
+      <p>Twitter</p>
+      <p>Instagram</p>
+    </div>
+  </footer>
+
+  <script src="/js/index.js"></script>
+  <script src="/js/accountStorage.js"></script>
 </body>
 </html>
