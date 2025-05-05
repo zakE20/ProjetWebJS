@@ -11,6 +11,7 @@ import Level2 from './Levels/Level2.js';
 import Level3 from './Levels/Level3.js';
 import Level4 from './Levels/Level4.js'; 
 import Victoire from "./Levels/Victoire.js";
+import { playGame,setMuted,playGameOver } from './Son.js'; 
 // Game class gère tout : le joueur, les ennemis, les balles, le score, et les règles du jeu.
 export default class Game {
     objetsGraphiques = []; // Une liste pour stocker joueur, ennemis, balles.
@@ -24,8 +25,10 @@ export default class Game {
             Space: false, // Tirer.
             mouseX: 0, // Position de la souris.
             mouseY: 0, // Position de la souris .
+            
         };
-
+        this.isPaused = false;   
+        this.pauseOverlayAlpha = 0; 
         this.enemyDirection = 1; // Les ennemis commencent par aller à droite.
         this.enemyVerticalDirection = 1; // Les ennemis descendent au début.
     }
@@ -43,13 +46,18 @@ export default class Game {
         this.resizeCanvas();
         this.player = new Player(this.canvas.width / 2, this.canvas.height - 50, 0, this.ctx); // Crée le joueur.
         this.objetsGraphiques.push(this.player); // on ajoute le joueur à la liste.
-
         this.loadLevel(this.currentLevelIndex); // Charge le niveau.
-        this.score = new Score(this.ctx, 10, 30); // on initialise le score en haut à gauche.
+        const email = localStorage.getItem('currentUser');
+        this.score = new Score(this.ctx, 10, 30,email); // on initialise le score en haut à gauche.
         this.lives = new Lives(this.ctx, this.canvas.width - 100, 30, 3); // on initialise les vies en haut à droite.
 
         initListeners(this.inputStates, this.canvas); 
-         // fix:on Déclenche les tirs ennemis toutes les 2 secondes
+        document.getElementById('pause-btn')
+        .addEventListener('click', () => this.togglePause());
+        window.addEventListener('keydown', (e) => {
+    if (e.key === 'p' || e.key === 'P') this.togglePause();
+        });
+// fix:on Déclenche les tirs ennemis toutes les 2 secondes
          setInterval(() => {
             if (this.currentLevelIndex !== 0) {
                 if (this.currentLevelIndex === 2) {
@@ -73,29 +81,28 @@ export default class Game {
             }
         }, 2000);
     }
-        
-        // gestion des tirs multiples
+    togglePause(){
+        this.isPaused = !this.isPaused;
+        const btn = document.getElementById('pause-btn');
+        btn.textContent = this.isPaused ? '▶' : '⏸';
+        setMuted(this.isPaused);
+    }
         shootMultipleEnemies(numEnemies) {
             const enemies = this.objetsGraphiques.filter(obj => obj instanceof Enemy);
             const randomEnemies = [];
-        
             // on liimite le nombre de tirs à la quantité d'ennemis disponibles
             const actualEnemiesToShoot = Math.min(numEnemies, enemies.length);
-            
             while (randomEnemies.length < actualEnemiesToShoot) {
                 const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
                 if (!randomEnemies.includes(randomEnemy)) {
                     randomEnemies.push(randomEnemy);
                 }
             }
-        
-            randomEnemies.forEach(enemy => {
+        randomEnemies.forEach(enemy => {
                 enemyShoot(enemy, this); 
             });
         }
-        
-        
-    loadLevel(indexLevel) {
+        loadLevel(indexLevel) {
         if (indexLevel < this.levels.length) {
             const level = this.levels[indexLevel]; // on récupère le niveau actuel.
             level.appliquerLeFond(this); // on applique le fond du niveau.
@@ -115,47 +122,59 @@ export default class Game {
             console.log("Tous les niveaux sont terminés !"); //debug.
         }
     }
-
-    //  démarre le jeu.
+//  démarre le jeu.
     start() {
         console.log("Game démarré");
+        playGame();
         requestAnimationFrame(this.mainAnimationLoop.bind(this)); // On lance la boucle principale.
     }
-
-    // La boucle principale du jeu.
+    drawPauseOverlay(){
+        if (this.pauseOverlayAlpha < 0.6) this.pauseOverlayAlpha += 0.02;
+        this.ctx.fillStyle = `rgba(0,0,0,${this.pauseOverlayAlpha})`;
+        this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
+        this.ctx.fillStyle = '#fff';
+        this.ctx.font = '48px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText('PAUSE', this.canvas.width/2, this.canvas.height/2);
+    }
     mainAnimationLoop() {
-        if (this.isGameOver) {
-            this.score.updateHighScore(); // Met à jour le meilleur score.
-            localStorage.setItem("currentScore", this.score.value);  
-            localStorage.setItem("highScore", this.score.highScore); 
-
-            window.location.href = "../html/gameOver.html"; 
-            return; 
+        if (this.isPaused){
+            this.drawAllObjects();
+            this.drawPauseOverlay();
+            requestAnimationFrame(this.mainAnimationLoop.bind(this));
+            return;                       
         }
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Efface l'écran.
+        if (this.isGameOver) {
+            const email  = localStorage.getItem('currentUser');        // joueur connecté
+            const scores = JSON.parse(localStorage.getItem('scores') || '{}');
+        if (email) {
+                const best = scores[email] || 0;
+                scores[email] = Math.max(best, this.score.value);      
+                localStorage.setItem('scores', JSON.stringify(scores));
+            }
+            localStorage.setItem('lastScore', this.score.value);      
+           window.location.href = "../html/gameOver.html";
+            return;
+        }
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); 
         this.drawAllObjects(); 
-        this.score.draw(); // Dessine le score.
+        this.score.draw(); // ondessine le score.
         this.lives.draw();
         this.update(); // update les positions et les règles du jeu.
         requestAnimationFrame(this.mainAnimationLoop.bind(this)); // On relance la boucle.
     }
-
     // update le jeu .
     update() {
         this.movePlayer(); // Déplace le joueur.
-
         let shouldChangeDirection = false; 
         let shouldReverseVertical = false; 
-
         this.objetsGraphiques.forEach(obj => {
             if (obj instanceof Enemy) {
                 obj.x += this.enemyDirection * obj.vitesse; // Déplace l'ennemi horizontalement.
-
                 // Si un ennemi touche un bord on change de direction.
                 if (obj.x - obj.rayon < 0 || obj.x + obj.rayon > this.canvas.width) {
                     shouldChangeDirection = true;
                 }
-
                 //  SI un ennemi est trop proche du joueur, il remonte.
                 if (obj.y + obj.rayon >= this.player.y - 100) {
                     shouldReverseVertical = true;
@@ -173,8 +192,7 @@ export default class Game {
                 }
             });
         }
-
-        // Si les ennemis sont trop proches, ils remontent légèrement.
+    // Si les ennemis sont trop proches, ils remontent légèrement.
         if (shouldReverseVertical) {
             this.objetsGraphiques.forEach(obj => {
                 if (obj instanceof Enemy) {
@@ -192,18 +210,14 @@ export default class Game {
             this.isGameOver = true; // Fin du jeu si plus de vies.
         }
         });
-        
-        
-         this.checkCollisions(); // balle contre ennemi.
+        this.checkCollisions(); // balle contre ennemi.
     }
-
     shoot() {
         const bullet = this.player.shoot(); // 
         if (bullet) {
             this.objetsGraphiques.push(bullet); 
         }
     }
-
     drawAllObjects() {
         this.objetsGraphiques.forEach(obj => {
             obj.draw(this.ctx); // dessine chaque objet.
@@ -213,20 +227,15 @@ export default class Game {
     // On déplace le joueur en fonction des touches clavier.
     movePlayer() {
         this.player.vitesseX = 0; // Par défaut le joueur fixe.
-
         if (this.inputStates.ArrowRight || this.inputStates["D"]) {
             this.player.vitesseX = 3; // Vitesse à droite.
         }
         if (this.inputStates.ArrowLeft || this.inputStates["A"]) {
             this.player.vitesseX = -3;
         }
-
         this.player.move(); //move  joueur.
         this.player.stayWithinBounds(this.canvas.width); // Empêche le joueur de sortir des limites.
-
-    
     }
-
     //  on vérifie les collisions entre les balles et les ennemis.
     checkCollisions() {
         this.objetsGraphiques.forEach(obj => {
