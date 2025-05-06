@@ -1,11 +1,10 @@
-import {
-  createPlayerBoard,
-  renderShip,
-  createLogo,
-  createBoardUI,
-} from "./helpers.js";
+import { createPlayerBoard, renderShip, createLogo, createBoardUI } from "./helpers.js";
+let score = 0;
 
 function gameScreen(game, players) {
+  // Reset score on new game start
+  score = 0;
+
   const MARKER = "●";
   const HIT_MARKER = "X";
   const boards = [];
@@ -16,8 +15,7 @@ function gameScreen(game, players) {
   const turn = document.getElementById("turnStatus");
   const winModal = document.getElementsByClassName("game_win-modal")[0];
   const winMessageModal = winModal.getElementsByClassName("win_msg")[0];
-  const winMessageTitle =
-    winMessageModal.getElementsByClassName("win_msg-title")[0];
+  const winMessageTitle = winMessageModal.getElementsByClassName("win_msg-title")[0];
 
   // Methods
   function render() {
@@ -36,6 +34,10 @@ function gameScreen(game, players) {
         <span class="accent-color">STATUS:</span>
         <p id="turnStatus"></p>
       </div>
+      <div class="game_score flash">
+        <span class="accent-color">SCORE:</span>
+        <span id="scoreValue">${score}</span>
+      </div>
       <div class="game_boards"></div>
       <div class="game_win-modal">
         <div class="dark-overlay"></div>
@@ -45,7 +47,6 @@ function gameScreen(game, players) {
           <button type="button" id="restartGame" class="btn-primary">
             RESTART GAME
           </button>
-          
           <img class="win_msg-img"
             src="./ui/images/deco-ship.png"
             alt="A warship in the sea">
@@ -63,7 +64,7 @@ function gameScreen(game, players) {
     });
 
     const gameboardsSection =
-      document.body.getElementsByClassName("game_boards")[0];
+        document.body.getElementsByClassName("game_boards")[0];
     renderBoards(gameboardsSection);
   }
 
@@ -75,25 +76,18 @@ function gameScreen(game, players) {
 
       if (boardIndex === 0) {
         boardUI = createPlayerBoard(playerBoard, false);
-        boardUI.classList.add("board");
-        boardUI.classList.add("zoomIn", "animated-fast");
+        boardUI.classList.add("board", "zoomIn", "animated-fast");
       } else {
         boardUI = createEnemyBoard(playerBoard);
-        boardUI.classList.add("board-enemy");
-        boardUI.classList.add("zoomIn", "animated-fast");
+        boardUI.classList.add("board-enemy", "zoomIn", "animated-fast");
       }
 
-      setTimeout(
-        (board) => {
-          board.classList.remove("zoomIn", "animated-fast");
-        },
-        1000,
-        boardUI
-      );
+      setTimeout(() => {
+        boardUI.classList.remove("zoomIn", "animated-fast");
+      }, 1000);
 
       container.append(boardUI);
       boards.push(boardUI);
-
       boardIndex++;
     }
   }
@@ -120,7 +114,7 @@ function gameScreen(game, players) {
     setTimeout(() => {
       const turn = game.playComputerTurn();
       const box = boards[0].querySelector(
-        `[data-row="${turn.coords[0]}"][data-col="${turn.coords[1]}"]`
+          `[data-row="${turn.coords[0]}"][data-col="${turn.coords[1]}"]`
       );
       handleTurnResult(turn, box, boards[0]);
       if (turn.isGameWon) return showWinMessage();
@@ -128,7 +122,6 @@ function gameScreen(game, players) {
         computerTurn();
         return;
       }
-
       updateTurn();
     }, 700);
   };
@@ -150,6 +143,12 @@ function gameScreen(game, players) {
     const markerBox = box.getElementsByClassName("board_box-marker")[0];
 
     if (turnResult.shipHit) {
+      // Only increment score on player's hits (i.e., hits on the enemy board)
+      if (board.classList.contains("board-enemy")) {
+        score++;
+        document.getElementById("scoreValue").textContent = score;
+      }
+
       markerBox.textContent = HIT_MARKER;
       box.classList.add("hit");
 
@@ -158,18 +157,15 @@ function gameScreen(game, players) {
       // When a ship is sunk mark as attacked all the adjacent boxes to it
       turnResult.adjacentCoords.forEach((coords) => {
         const adjacentBox = board.querySelector(
-          `[data-row="${coords[0]}"][data-col="${coords[1]}"]`
+            `[data-row="${coords[0]}"][data-col="${coords[1]}"]`
         );
         adjacentBox.textContent = MARKER;
         adjacentBox.classList.add("not-available");
       });
 
       const shipStartingBox = board.querySelector(
-        `[data-row="${turnResult.beginningCoords[0]}"][data-col="${turnResult.beginningCoords[1]}"]`
+          `[data-row="${turnResult.beginningCoords[0]}"][data-col="${turnResult.beginningCoords[1]}"]`
       );
-
-      // Reveal the enemy ship that was sunk (only used when the attack
-      //  is directed to a computer player)
       const ship = shipStartingBox.getElementsByClassName("ship")[0];
       if (ship == null) {
         let shipUI = renderShip(turnResult.ship.length, turnResult.ship.axis);
@@ -178,7 +174,9 @@ function gameScreen(game, players) {
         return;
       }
       ship.classList.add("sunk");
-    } else markerBox.textContent = MARKER;
+    } else {
+      markerBox.textContent = MARKER;
+    }
   };
 
   const showWinMessage = () => {
@@ -187,7 +185,6 @@ function gameScreen(game, players) {
     } else {
       winMessageTitle.textContent = `You have CONQUERED!`;
     }
-
     winModal.classList.add("active");
     winMessageModal.classList.add("active");
   };
