@@ -1,5 +1,5 @@
 # ProjetWebJS
-# jeu de bateaux
+# 2ème jeu de bateaux
 
 Une implémentation du jeu de bateaux en JavaScript utilisant le DOM pour l'affichage, avec une IA intelligente, le placement de bateaux, la mécanique de tir et un système de score local.
 
@@ -38,7 +38,7 @@ Une implémentation du jeu de bateaux en JavaScript utilisant le DOM pour l'affi
 
 ---
 
-## 📁 Structure du projet
+## 📁 Structure du jeu
 
 ```text
 src/
@@ -53,24 +53,6 @@ src/
 ├── utils.js             # Fonctions génériques
 └── index.html           # Point d'entrée du jeu
 ```
-
----
-
-## ⚙️ Installation
-
-1. Cloner le dépôt :
-
-   ```bash
-   git clone https://github.com/votre-utilisateur/battleship-js.git
-   ```
-2. Ouvrir `index.html` dans votre navigateur, ou servir via un petit serveur HTTP :
-
-   ```bash
-   cd battleship-js
-   npx http-server .
-   ```
-
----
 
 ## 🎮 Usage
 
