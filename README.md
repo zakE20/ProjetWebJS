@@ -1,5 +1,32 @@
 
 # ProjetWebJS
+## 1. **Space Alien Invaders**
+
+### Description
+**Space Alien Invaders** est un jeu de tir (shoot'em up) rétro où le joueur pilote un vaisseau spatial pour éliminer des vagues d'extraterrestres tout en évitant leurs tirs. Le jeu comporte 5 niveaux avec une difficulté croissante.
+
+### Technologies utilisées
+- **JavaScript** (Vanilla)
+- **HTML5** / **CSS3**
+- **Canvas API** pour les rendus graphiques
+- **localStorage** pour la gestion des scores et des utilisateurs
+
+### Fonctionnalités
+- **Contrôles du joueur** :
+  - Déplacement : **Flèches gauche/droite** ou **A / D**
+  - Tir : **Barre d'espace**
+  - Pause : **Touche P**
+  
+- **Niveaux progressifs** :
+  Le jeu comporte 5 niveaux, avec des ennemis plus rapides et plus nombreux à chaque niveau.
+
+- **Système de vies** :
+  Le joueur perd une vie chaque fois qu'il est touché par un tir ennemi.
+
+- **Classement** :
+  Les scores sont sauvegardés dans **localStorage** pour chaque utilisateur connecté.
+
+---
 # 2ème jeu de bateaux
 
 Une implémentation du jeu de bateaux en JavaScript utilisant le DOM pour l'affichage, avec une IA intelligente, le placement de bateaux, la mécanique de tir et un système de score local.
