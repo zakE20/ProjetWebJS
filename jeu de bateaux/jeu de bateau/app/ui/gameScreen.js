@@ -1,3 +1,4 @@
+// gameScreen.js
 import { createPlayerBoard, renderShip, createLogo, createBoardUI } from "./helpers.js";
 let score = 0;
 
@@ -58,13 +59,11 @@ function gameScreen(game, players) {
     gameSection.prepend(gameHeader);
     document.body.append(gameSection);
 
-    const restartBtn = document.getElementById("restartGame");
-    restartBtn.addEventListener("click", () => {
+    document.getElementById("restartGame").addEventListener("click", () => {
       PubSub.publish("RESTART GAME");
     });
 
-    const gameboardsSection =
-        document.body.getElementsByClassName("game_boards")[0];
+    const gameboardsSection = document.body.getElementsByClassName("game_boards")[0];
     renderBoards(gameboardsSection);
   }
 
@@ -145,7 +144,7 @@ function gameScreen(game, players) {
     if (turnResult.shipHit) {
       // Only increment score on player's hits (i.e., hits on the enemy board)
       if (board.classList.contains("board-enemy")) {
-        score++;
+        score += 10;  // each hit now counts for 10 points
         document.getElementById("scoreValue").textContent = score;
       }
 
@@ -154,7 +153,7 @@ function gameScreen(game, players) {
 
       if (!turnResult.adjacentCoords) return;
 
-      // When a ship is sunk mark as attacked all the adjacent boxes to it
+      // When a ship is sunk mark as attacked all adjacent boxes
       turnResult.adjacentCoords.forEach((coords) => {
         const adjacentBox = board.querySelector(
             `[data-row="${coords[0]}"][data-col="${coords[1]}"]`
@@ -167,7 +166,7 @@ function gameScreen(game, players) {
           `[data-row="${turnResult.beginningCoords[0]}"][data-col="${turnResult.beginningCoords[1]}"]`
       );
       const ship = shipStartingBox.getElementsByClassName("ship")[0];
-      if (ship == null) {
+      if (!ship) {
         let shipUI = renderShip(turnResult.ship.length, turnResult.ship.axis);
         shipUI.classList.add("sunk");
         shipStartingBox.append(shipUI);
@@ -180,6 +179,9 @@ function gameScreen(game, players) {
   };
 
   const showWinMessage = () => {
+    // persist this game’s final score for the leaderboard
+    localStorage.setItem("currentScore", String(score));
+
     if (game.isComputerTurn()) {
       winMessageTitle.textContent = `${currPlayer.name} CONQUERED!`;
     } else {
