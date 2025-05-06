@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bibliothèque – Ludiverse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/games.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bibliothèque – Ludiverse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/games.css" />
 </head>
 <body>
 <button class="back-btn" onclick="location.href='index.html'" aria-label="Accueil">
     ⬅
-  </button>
+</button>
+
 <h1 class="page-title">Bibliothèque de jeux</h1>
+
 <section class="grid">
-<article class="card">
-  <img src="assets/game.webp" alt="Space Invaders" />
-  <h2 class="tag">Canvas</h2>
-  <p class="excerpt">Un shoot ' em up rétro entièrement en HTML Canvas.</p>
-   <div class="btn-row">
-    <button onclick="location.href='space-invaders/html/accueil.html'">
-      Play
-    </button>
-  <button class="secondary"
-            onclick="location.href='classement.html?game=canvas'">
-      Voir classement
-    </button>
-  </div>
-</article>
     <article class="card">
-      <img src="assets/DOM.jpg" alt="DOM Game" />
-      <h2 class="tag tag‑orange">DOM</h2>
-      <p class="excerpt">Mini‑jeu d’énigmes basé sur la manipulation du DOM.</p>
-      <button disabled>Coming soon</button>
+        <img src="assets/game.webp" alt="Space Invaders" />
+        <h2 class="tag">Canvas</h2>
+        <p class="excerpt">Un shoot ' em up rétro entièrement en HTML Canvas.</p>
+        <div class="btn-row">
+            <button onclick="location.href='space-invaders/html/accueil.html'">
+                Play
+            </button>
+        </div>
     </article>
+
     <article class="card">
-      <img src="assets/babylone.jpeg" alt="Babylone JS Demo" />
-      <h2 class="tag tag‑green">Babylone.js</h2>
-      <p class="excerpt">Prototype 3D temps réel avec Babylon JS.</p>
-      <button disabled>Coming soon</button>
+        <img src="assets/zombie anime.png" alt="DOM Game" />
+        <h2 class="tag tag-orange">Babylone</h2>
+        <p class="excerpt">Jeu de zombie.</p>
+        <div class="btn-row">
+            <button disabled>
+                Coming soon
+            </button>
+        </div>
+    </article>
+
+    <article class="card">
+        <img src="jeu%20de%20bateaux/jeu%20de%20bateau/app/ui/images/deco-ship.png" alt="DOM Game" />
+        <h2 class="tag tag-orange">DOM</h2>
+        <p class="excerpt">Jeu de bateau.</p>
+        <div class="btn-row">
+            <button onclick="location.href='jeu de bateaux/jeu de bateau/app/index.html'">
+                Play
+            </button>
+        </div>
     </article>
 </section>
+
+<div class="btn-row voir-classement-row">
+    <button onclick="location.href='classement.html'">
+        Voir classement
+    </button>
+</div>
 </body>
 </html>
