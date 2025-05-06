@@ -93,3 +93,34 @@ body{
   cursor:not-allowed;
   opacity:.4;
 }
+/* Center and constrain the bottom button row */
+.voir-classement-row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Style the “Voir classement” button */
+.voir-classement-row button {
+  background: linear-gradient(135deg, #d33bfd 0%, #8b24b0 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover/focus states */
+.voir-classement-row button:hover,
+.voir-classement-row button:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
