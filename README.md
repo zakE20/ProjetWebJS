@@ -27,6 +27,33 @@
   Les scores sont sauvegardés dans **localStorage** pour chaque utilisateur connecté.
 
 ---
+# jeu de babylone
+
+comme expliqué dans la présentation :
+
+# Installation
+
+1. Téléchargez Node.js ici : https://nodejs.org/fr/download/
+2. Dans le dossier du projet sur votre machine, exécutez `npm install`, puis `npm start`
+
+# concept du jeu
+
+1. Éliminez tous les ennemis
+2. La porte du village s’ouvre
+3. Éliminez les ennemis à l’intérieur
+4. Félicitations, vous avez sauvé le monde !
+
+# Fonctionnalités
+
+* 5 types de zones de jeu : Point de départ, Lac, Forêt, Désert, Village fortifié
+* 5 armes animées disponibles : Pistolet, Fusil à pompe, AK, RayGun et LightningGun, chacune avec son propre effet de tir
+* 4 types d’ennemis animés : Crâne flottant, Zombie lent, Dragon volant, Squelette géant
+* 2 types d’objets consommables : Potion de santé et Potion d’énergie
+* Sprint avec la touche Maj (Shift) qui consomme de l’énergie
+* Packs de munitions pour chaque arme disséminés un peu partout
+* HUD (interface tête haute) du joueur
+* Barres de vie des ennemis
+
 # 2ème jeu de bateaux
 
 Une implémentation du jeu de bateaux en JavaScript utilisant le DOM pour l'affichage, avec une IA intelligente, le placement de bateaux, la mécanique de tir et un système de score local.
