@@ -4,160 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90e465ee-8aa1-45c4-8855-83b943e86ea9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/jeubabylone/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Dragon.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Dragon2.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Dragon3.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Dragon4.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/LightningGun.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Pistol.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/RayGun.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Rifle.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Skeleton1.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Skeleton2.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Skeleton3.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Skeleton4.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Skeleton5.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Zombie1.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Zombie2.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Zombie3.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Zombie4.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/Zombie5.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/models/flare.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test167.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test168.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test168.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test169.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test169.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test169.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test170.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test170.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test170.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test171.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test171.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test171.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test172.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test172.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test172.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test173.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test173.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test173.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test174.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test174.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test174.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test175.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test175.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test175.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test176.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test176.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test176.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test177.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test177.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test177.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test178.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test178.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test178.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test179.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test179.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test180.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test180.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test181.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test181.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test182.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test182.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test183.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test183.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test183.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test184.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test184.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test184.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test185.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test185.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test186.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test186.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test187.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test187.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test187.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test188.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test188.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test189.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test189.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test189.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test190.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test190.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test190.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test191.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test191.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test192.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test192.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test192.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test193.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test193.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test193.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test194.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test194.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test194.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test195.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test195.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test196.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test196.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test196.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test197.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test197.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/scenes/test197.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/ak47Muzzle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/candleOpacity.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/crosshair.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/dessert.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/distortion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/fire.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/flare.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/grass1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/lake bottom.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/orb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/pistolMuzzle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/shotgunMuzzle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/TropicalSunnyDay_nx.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/TropicalSunnyDay_ny.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/TropicalSunnyDay_nz.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/TropicalSunnyDay_px.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/TropicalSunnyDay_py.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/TropicalSunnyDay_pz.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoonMidday_nx.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoonMidday_ny.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoonMidday_nz.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoonMidday_px.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoonMidday_py.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoonMidday_pz.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoon_nx.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoon_ny.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoon_nz.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoon_px.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoon_py.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/skybox/cartoon_pz.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/tileable-s7002876.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/assets/textures/waterbump.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/dist/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/dist/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/character.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/collectible.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/dragon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/enemy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/engine.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/skeleton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/weapon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeubabylone/jeubabylone/src/zombie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games.html" beforeDir="false" afterPath="$PROJECT_DIR$/games.html" afterDir="false" />
-    </list>
+    <list default="true" id="90e465ee-8aa1-45c4-8855-83b943e86ea9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -171,6 +18,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AchehbouneMohammedAmine"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/zakE20/ProjetWebJS.git",
+    "accountId": "f6b9185a-9a12-41cc-be96-70170e7a2c87"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -182,7 +41,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ajout-de-la-partie-presentation",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/M445061/ProjetWebJS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -214,6 +73,7 @@
       <updated>1746316656092</updated>
       <workItem from="1746316657385" duration="7036000" />
       <workItem from="1746493354946" duration="1078000" />
+      <workItem from="1747208798121" duration="308000" />
     </task>
     <servers />
   </component>
